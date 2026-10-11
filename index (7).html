@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ema ✦ lumânări, pisici și povești</title>
+<meta name="description" content="Un colț turcoaz făcut pentru Ema.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕯️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#d9f4f0; --bg2:#bfece6; --ink:#0a3d42; --soft:#2f6a70;
+  --turq:#17b3a8; --deep:#0d6f73; --night:#06292d; --flame:#ffc15e; --paper:#f2fcfa;
+  --serif:"Young Serif",Georgia,"Times New Roman",serif;
+  --sans:"Figtree",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+:root[data-theme="night"]{--bg:#06292d;--bg2:#0a3b40;--ink:#d9f4f0;--soft:#8fcfc8;--paper:#0d4046;--night:#031a1d}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.08rem/1.65 var(--sans);transition:background .6s,color .6s}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.1;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--flame);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 1.4rem}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;min-height:92vh;padding:3rem 0}
+.hero h1{font-size:clamp(5rem,17vw,11rem);color:var(--deep);letter-spacing:-.03em}
+:root[data-theme="night"] .hero h1{color:var(--turq)}
+.hero p{max-width:30ch;font-size:1.25rem;color:var(--soft);margin:1rem 0 1.6rem}
+.btns{display:flex;gap:.7rem;flex-wrap:wrap}
+button,.btn{font:700 1rem var(--sans);border:2px solid var(--deep);background:transparent;color:var(--ink);padding:.65rem 1.2rem;border-radius:99px;cursor:pointer;text-decoration:none;transition:background .2s,color .2s}
+button:hover,.btn:hover{background:var(--deep);color:var(--paper)}
+.candle-stage{position:relative;display:grid;place-items:center}
+.glow{position:absolute;width:120%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,193,94,.55),rgba(255,193,94,0) 62%);transition:opacity .8s;pointer-events:none}
+.candle{background:none;border:0;padding:0;cursor:pointer;position:relative;width:min(260px,70%);display:block}
+.candle:hover{background:none}
+.candle svg{width:100%;height:auto;display:block;overflow:visible}
+.flame{transform-origin:50% 100%;transform-box:fill-box;animation:flick 2.4s ease-in-out infinite;transition:opacity .5s,transform .5s}
+@keyframes flick{0%,100%{transform:scale(1,1) rotate(-1deg)}30%{transform:scale(.95,1.06) rotate(1.5deg)}60%{transform:scale(1.04,.96) rotate(-1.5deg)}}
+.out .flame{opacity:0;animation:none;transform:scale(.3)}
+.out ~ .glow,.stage-out .glow{opacity:0}
+.hint{position:absolute;bottom:-.4rem;font-size:.9rem;color:var(--soft)}
+
+/* sections */
+section{padding:4.5rem 0}
+h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:1.2rem;color:var(--deep)}
+:root[data-theme="night"] h2{color:var(--turq)}
+.lead{max-width:58ch;color:var(--soft)}
+
+.candles{background:var(--night);color:#d9f4f0;border-radius:2.5rem;padding:3.5rem 2rem;margin:1rem 0}
+.candles h2{color:var(--flame)}
+.candles .lead{color:#9fd8d1}
+.row{display:flex;gap:1rem;align-items:flex-end;margin-top:2rem;flex-wrap:wrap}
+.cd{width:54px;border-radius:6px 6px 4px 4px;position:relative;background:linear-gradient(90deg,#1fc9bc,#0f8f8e)}
+.cd::before{content:"";position:absolute;left:50%;top:-22px;width:12px;height:22px;margin-left:-6px;border-radius:50% 50% 50% 50%/65% 65% 35% 35%;background:radial-gradient(circle at 50% 70%,#fff3c9,var(--flame) 60%,#ff9e3d);animation:flick 2.2s ease-in-out infinite}
+.cd:nth-child(2){animation-delay:.4s}.cd:nth-child(3)::before{animation-delay:.9s}.cd:nth-child(4)::before{animation-delay:.3s}.cd:nth-child(5)::before{animation-delay:1.2s}
+
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.rules{list-style:none;margin:0;padding:0;display:grid;gap:.8rem}
+.rules li{background:var(--paper);border-left:6px solid var(--turq);padding:.8rem 1.1rem;border-radius:0 18px 18px 0}
+.cat-art{font-size:clamp(6rem,18vw,11rem);text-align:center;line-height:1;filter:drop-shadow(0 12px 0 var(--bg2))}
+
+.anime{background:var(--bg2);border-radius:2.5rem;padding:3.5rem 2rem}
+.anime .grid{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center}
+.badge{font-family:var(--serif);font-size:clamp(4rem,12vw,7rem);color:var(--deep);line-height:1}
+.badge small{display:block;font:700 1rem var(--sans);color:var(--soft)}
+.splash{display:inline-block;transition:transform .3s}
+.badge button{font-size:1rem;margin-top:1rem}
+.is-girl .badge span.w{display:inline}
+
+/* books */
+.shelf{display:flex;gap:.5rem;align-items:flex-end;margin-top:2rem;padding:0 1rem;border-bottom:14px solid var(--deep);overflow-x:auto}
+.spine{writing-mode:vertical-rl;transform:rotate(180deg);font:400 1.05rem var(--serif);color:#f2fcfa;border:0;border-radius:6px 6px 0 0;padding:1.3rem .9rem;min-width:62px;cursor:pointer;text-align:left}
+.spine:hover{filter:brightness(1.12);background:inherit;color:#f2fcfa}
+.spine[aria-pressed="true"]{outline:3px solid var(--flame);outline-offset:2px}
+.s1{background:#0d6f73;height:260px}.s2{background:#17b3a8;height:290px;color:#06292d}.s3{background:#06292d;height:240px}.s4{background:#3fd0c4;height:210px;color:#06292d}
+.s2:hover,.s4:hover{color:#06292d}
+.note{min-height:5.5rem;margin-top:1.5rem;background:var(--paper);padding:1rem 1.3rem;border-radius:18px;max-width:60ch}
+
+footer{text-align:center;padding:3rem 1rem 4rem;color:var(--soft)}
+footer .btns{justify-content:center;margin-bottom:1.5rem}
+
+@media(max-width:760px){
+  .hero{grid-template-columns:1fr;min-height:auto;text-align:left}
+  .candle-stage{order:-1;margin-top:1rem}
+  .cats,.anime .grid{grid-template-columns:1fr}
+  .candles,.anime{border-radius:1.6rem;padding:2.5rem 1.2rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media print{.btns,.hint,.themebtn{display:none}body{background:#fff;color:#000}.candles{background:#fff;color:#000;border:2px solid #0d6f73}.candles h2{color:#0d6f73}section{padding:1.5rem 0;break-inside:avoid}.hero{min-height:auto}}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <header class="hero">
+    <div>
+      <h1>Ema</h1>
+      <p>Un colț turcoaz pentru cea mai bună prietenă: lumânări, pisici și povești.</p>
+      <div class="btns">
+        <a class="btn" href="#lumanari">Intră</a>
+        <button type="button" id="theme" class="themebtn" aria-pressed="false">Mod de seară</button>
+      </div>
+    </div>
+    <div class="candle-stage" id="stage">
+      <div class="glow" id="glow"></div>
+      <button type="button" class="candle" id="candle" aria-label="Aprinde sau stinge lumânarea" aria-pressed="true">
+        <svg viewBox="0 0 120 260" role="img" aria-hidden="true">
+          <ellipse cx="60" cy="246" rx="52" ry="9" fill="#0d6f73" opacity=".25"/>
+          <rect x="22" y="90" width="76" height="152" rx="10" fill="url(#w)"/>
+          <path d="M22 100q10 22 20 0t18 0q8 26 18 0t20 0v-10H22z" fill="#8ff0e6"/>
+          <rect x="57.5" y="68" width="5" height="26" rx="2.5" fill="#06292d"/>
+          <g class="flame">
+            <path d="M60 6c14 22 20 34 20 46a20 20 0 0 1-40 0c0-12 6-24 20-46z" fill="#ff9e3d"/>
+            <path d="M60 24c8 14 11 22 11 29a11 11 0 0 1-22 0c0-7 3-15 11-29z" fill="#ffc15e"/>
+            <path d="M60 40c4 7 6 11 6 15a6 6 0 0 1-12 0c0-4 2-8 6-15z" fill="#fff3c9"/>
+          </g>
+          <defs><linearGradient id="w" x1="0" x2="1"><stop offset="0" stop-color="#3fd0c4"/><stop offset=".55" stop-color="#17b3a8"/><stop offset="1" stop-color="#0d6f73"/></linearGradient></defs>
+        </svg>
+      </button>
+      <span class="hint" id="hint">atinge lumânarea</span>
+    </div>
+  </header>
+
+  <section id="lumanari" class="candles">
+    <h2>Lumânările</h2>
+    <p class="lead">Lumina mică de seară care face orice cameră să pară mai blândă. Ema știe asta: o lumânare aprinsă înseamnă că ziua s-a terminat și poți respira.</p>
+    <div class="row" aria-hidden="true">
+      <div class="cd" style="height:70px"></div><div class="cd" style="height:120px"></div><div class="cd" style="height:90px"></div><div class="cd" style="height:150px"></div><div class="cd" style="height:60px"></div>
+    </div>
+  </section>
+
+  <section id="pisici">
+    <div class="cats">
+      <div>
+        <h2>Pisicile</h2>
+        <p class="lead">Mici, moi și convinse că toată casa le aparține. Regulile unui om cu pisici:</p>
+        <ul class="rules">
+          <li>Dacă s-a așezat pe tine, nu te mai poți mișca.</li>
+          <li>Cutia e mai interesantă decât cadoul din ea.</li>
+          <li>Un tors rezolvă o zi proastă.</li>
+        </ul>
+      </div>
+      <div class="cat-art" aria-hidden="true">🐈</div>
+    </div>
+  </section>
+
+  <section id="anime" class="anime">
+    <div class="grid">
+      <div class="badge" id="badge">
+        <span id="ranma">Ranma ½</span>
+        <small id="sub">varianta veche, cu apă rece</small>
+        <button type="button" id="water">Toarnă apă</button>
+      </div>
+      <div>
+        <h2>Animeurile</h2>
+        <p class="lead">Ranma ½, în versiunea veche, e un clasic: arte marțiale, comedie și un băiat care se transformă în fată la contactul cu apa rece. Haos pur, exact cum trebuie.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="carti">
+    <h2>Cărțile</h2>
+    <p class="lead">Seria <em>The Folk of the Air</em> de Holly Black: lumea Zânelor, intrigi de curte și o fată muritoare care nu are de gând să piardă. Alege un volum.</p>
+    <div class="shelf" role="group" aria-label="Raft cu cărți">
+      <button class="spine s1" type="button" aria-pressed="false" data-t="Primul volum. Jude, crescută printre zâne, încearcă să-și facă loc la curtea Înaltului Rege.">The Cruel Prince</button>
+      <button class="spine s2" type="button" aria-pressed="false" data-t="Al doilea volum. Puterea se câștigă greu, iar păstrarea ei e și mai grea.">The Wicked King</button>
+      <button class="spine s3" type="button" aria-pressed="false" data-t="Al treilea volum. Încheierea trilogiei principale, cu miza la maximum.">The Queen of Nothing</button>
+      <button class="spine s4" type="button" aria-pressed="false" data-t="Povestea suplimentară din seria Folk of the Air, pentru când vrei să mai rămâi în lume.">How the King of Elfhame Learned to Hate Stories</button>
+    </div>
+    <p class="note" id="note" aria-live="polite">Apasă pe o carte de pe raft.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="btns"><button type="button" onclick="window.print()">Salvează ca PDF</button></div>
+  <p>Făcut cu drag pentru Ema 🩵</p>
+</footer>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var candle=$('candle'),stage=$('stage'),glow=$('glow'),hint=$('hint');
+  candle.addEventListener('click',function(){
+    var out=candle.classList.toggle('out');
+    candle.setAttribute('aria-pressed',String(!out));
+    glow.style.opacity=out?0:1;
+    hint.textContent=out?'o aprinzi la loc?':'atinge lumânarea';
+  });
+  var th=$('theme'),root=document.documentElement;
+  th.addEventListener('click',function(){
+    var n=root.getAttribute('data-theme')==='night';
+    if(n){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme','night')}
+    th.setAttribute('aria-pressed',String(!n));
+    th.textContent=n?'Mod de seară':'Mod de zi';
+  });
+  var girl=false;
+  $('water').addEventListener('click',function(){
+    girl=!girl;
+    $('ranma').textContent=girl?'Ranma ♀':'Ranma ½';
+    $('sub').textContent=girl?'apă rece: s-a transformat!':'varianta veche, cu apă rece';
+    $('water').textContent=girl?'Toarnă apă caldă':'Toarnă apă';
+  });
+  var spines=document.querySelectorAll('.spine');
+  spines.forEach(function(b){
+    b.addEventListener('click',function(){
+      spines.forEach(function(x){x.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed','true');
+      $('note').textContent=b.getAttribute('data-t');
+    });
+  });
+})();
+</script>
+</body>
+</html>
