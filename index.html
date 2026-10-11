@@ -24,7 +24,11 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.1;margin:0}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--flame);outline-offset:3px;border-radius:6px}
 .wrap{max-width:1000px;margin:0 auto;padding:0 1.4rem}
-
+/* navigation */
+.site-nav{position:sticky;top:.75rem;z-index:10;display:flex;justify-content:center;margin:0 auto;padding-top:.75rem}
+.site-nav ul{display:flex;gap:.35rem;align-items:center;list-style:none;margin:0;padding:.4rem;background:color-mix(in srgb,var(--paper) 88%,transparent);border:1px solid color-mix(in srgb,var(--deep) 18%,transparent);border-radius:99px;box-shadow:0 8px 24px rgba(6,41,45,.08);backdrop-filter:blur(14px)}
+.site-nav a{display:block;padding:.45rem .9rem;border-radius:99px;text-decoration:none;font-size:.93rem;font-weight:700;color:var(--soft);transition:background .2s,color .2s,transform .2s}
+.site-nav a:hover{background:var(--deep);color:var(--paper);transform:translateY(-1px)}
 /* hero */
 .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;min-height:92vh;padding:3rem 0}
 .hero h1{font-size:clamp(5rem,17vw,11rem);color:var(--deep);letter-spacing:-.03em}
@@ -43,13 +47,11 @@ button:hover,.btn:hover{background:var(--deep);color:var(--paper)}
 .out .flame{opacity:0;animation:none;transform:scale(.3)}
 .out ~ .glow,.stage-out .glow{opacity:0}
 .hint{position:absolute;bottom:-.4rem;font-size:.9rem;color:var(--soft)}
-
 /* sections */
 section{padding:4.5rem 0}
 h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:1.2rem;color:var(--deep)}
 :root[data-theme="night"] h2{color:var(--turq)}
 .lead{max-width:58ch;color:var(--soft)}
-
 .candles{background:var(--night);color:#d9f4f0;border-radius:2.5rem;padding:3.5rem 2rem;margin:1rem 0}
 .candles h2{color:var(--flame)}
 .candles .lead{color:#9fd8d1}
@@ -57,12 +59,10 @@ h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:1.2rem;color:var(--deep)}
 .cd{width:54px;border-radius:6px 6px 4px 4px;position:relative;background:linear-gradient(90deg,#1fc9bc,#0f8f8e)}
 .cd::before{content:"";position:absolute;left:50%;top:-22px;width:12px;height:22px;margin-left:-6px;border-radius:50% 50% 50% 50%/65% 65% 35% 35%;background:radial-gradient(circle at 50% 70%,#fff3c9,var(--flame) 60%,#ff9e3d);animation:flick 2.2s ease-in-out infinite}
 .cd:nth-child(2){animation-delay:.4s}.cd:nth-child(3)::before{animation-delay:.9s}.cd:nth-child(4)::before{animation-delay:.3s}.cd:nth-child(5)::before{animation-delay:1.2s}
-
 .cats{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
 .rules{list-style:none;margin:0;padding:0;display:grid;gap:.8rem}
 .rules li{background:var(--paper);border-left:6px solid var(--turq);padding:.8rem 1.1rem;border-radius:0 18px 18px 0}
 .cat-art{font-size:clamp(6rem,18vw,11rem);text-align:center;line-height:1;filter:drop-shadow(0 12px 0 var(--bg2))}
-
 .anime{background:var(--bg2);border-radius:2.5rem;padding:3.5rem 2rem}
 .anime .grid{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center}
 .badge{font-family:var(--serif);font-size:clamp(4rem,12vw,7rem);color:var(--deep);line-height:1}
@@ -70,32 +70,60 @@ h2{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:1.2rem;color:var(--deep)}
 .splash{display:inline-block;transition:transform .3s}
 .badge button{font-size:1rem;margin-top:1rem}
 .is-girl .badge span.w{display:inline}
-
 /* books */
 .shelf{display:flex;gap:.5rem;align-items:flex-end;margin-top:2rem;padding:0 1rem;border-bottom:14px solid var(--deep);overflow-x:auto}
 .spine{writing-mode:vertical-rl;transform:rotate(180deg);font:400 1.05rem var(--serif);color:#f2fcfa;border:0;border-radius:6px 6px 0 0;padding:1.3rem .9rem;min-width:62px;cursor:pointer;text-align:left}
 .spine:hover{filter:brightness(1.12);background:inherit;color:#f2fcfa}
 .spine[aria-pressed="true"]{outline:3px solid var(--flame);outline-offset:2px}
+.spine{transition:filter .2s,transform .2s,box-shadow .2s}
+.spine:hover{transform:translateY(-7px)}
 .s1{background:#0d6f73;height:260px}.s2{background:#17b3a8;height:290px;color:#06292d}.s3{background:#06292d;height:240px}.s4{background:#3fd0c4;height:210px;color:#06292d}
 .s2:hover,.s4:hover{color:#06292d}
 .note{min-height:5.5rem;margin-top:1.5rem;background:var(--paper);padding:1rem 1.3rem;border-radius:18px;max-width:60ch}
-
+.book-actions{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;margin-top:1rem}
+.book-actions button:disabled{opacity:.55;cursor:not-allowed}
+.book-actions button:disabled:hover{background:transparent;color:var(--ink)}
+.privacy-note{font-size:.9rem;color:var(--soft);margin:.7rem 0 0}
+.external-link{display:inline-flex;align-items:center;gap:.35rem;font-weight:700;color:var(--deep);text-underline-offset:4px}
+:root[data-theme="night"] .external-link{color:var(--turq)}
+.reader{width:min(1050px,calc(100% - 2rem));height:min(88vh,900px);max-width:none;max-height:none;padding:0;border:1px solid color-mix(in srgb,var(--deep) 20%,transparent);border-radius:22px;background:var(--paper);color:var(--ink);box-shadow:0 24px 80px rgba(0,0,0,.35)}
+.reader::backdrop{background:rgba(3,26,29,.75);backdrop-filter:blur(5px)}
+.reader-shell{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr)}
+.reader-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 1rem;border-bottom:1px solid color-mix(in srgb,var(--deep) 20%,transparent)}
+.reader-head h3{font-size:1.25rem}
+.reader-head .btns{align-items:center}
+.reader-head button,.reader-head a{font-size:.9rem;padding:.45rem .85rem}
+.reader-frame{min-height:0;background:#1b2425}
+.reader-frame iframe{display:block;width:100%;height:100%;border:0;background:#fff}
 footer{text-align:center;padding:3rem 1rem 4rem;color:var(--soft)}
 footer .btns{justify-content:center;margin-bottom:1.5rem}
-
 @media(max-width:760px){
+  .site-nav{top:.35rem;padding-top:.35rem}
+  .site-nav ul{gap:0}
+  .site-nav a{font-size:.82rem;padding:.4rem .65rem}
   .hero{grid-template-columns:1fr;min-height:auto;text-align:left}
+  .hero{padding-top:1.5rem}
   .candle-stage{order:-1;margin-top:1rem}
   .cats,.anime .grid{grid-template-columns:1fr}
   .candles,.anime{border-radius:1.6rem;padding:2.5rem 1.2rem}
+  .reader{width:100%;height:100dvh;border-radius:0}
+  .reader-head{align-items:flex-start}
+  .reader-head .btns{gap:.4rem}
+  .reader-head button,.reader-head a{padding:.4rem .6rem}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 @media print{.btns,.hint,.themebtn{display:none}body{background:#fff;color:#000}.candles{background:#fff;color:#000;border:2px solid #0d6f73}.candles h2{color:#0d6f73}section{padding:1.5rem 0;break-inside:avoid}.hero{min-height:auto}}
 </style>
 </head>
 <body>
-
 <main class="wrap">
+  <nav class="site-nav" aria-label="Navigare principală">
+    <ul>
+      <li><a href="#lumanari">Lumânări</a></li>
+      <li><a href="#anime">Ranma ½</a></li>
+      <li><a href="#carti">Cărți</a></li>
+    </ul>
+  </nav>
   <header class="hero">
     <div>
       <h1>Ema</h1>
@@ -124,7 +152,6 @@ footer .btns{justify-content:center;margin-bottom:1.5rem}
       <span class="hint" id="hint">atinge lumânarea</span>
     </div>
   </header>
-
   <section id="lumanari" class="candles">
     <h2>Lumânările</h2>
     <p class="lead">Lumina mică de seară care face orice cameră să pară mai blândă. Ema știe asta: o lumânare aprinsă înseamnă că ziua s-a terminat și poți respira.</p>
@@ -132,7 +159,6 @@ footer .btns{justify-content:center;margin-bottom:1.5rem}
       <div class="cd" style="height:70px"></div><div class="cd" style="height:120px"></div><div class="cd" style="height:90px"></div><div class="cd" style="height:150px"></div><div class="cd" style="height:60px"></div>
     </div>
   </section>
-
   <section id="pisici">
     <div class="cats">
       <div>
@@ -147,7 +173,6 @@ footer .btns{justify-content:center;margin-bottom:1.5rem}
       <div class="cat-art" aria-hidden="true">🐈</div>
     </div>
   </section>
-
   <section id="anime" class="anime">
     <div class="grid">
       <div class="badge" id="badge">
@@ -156,12 +181,12 @@ footer .btns{justify-content:center;margin-bottom:1.5rem}
         <button type="button" id="water">Toarnă apă</button>
       </div>
       <div>
-        <h2>Animeurile</h2>
-        <p class="lead">Ranma ½, în versiunea veche, e un clasic: arte marțiale, comedie și un băiat care se transformă în fată la contactul cu apa rece. Haos pur, exact cum trebuie.</p>
+        <h2>Ranma ½</h2>
+        <p class="lead">Versiunea veche e un clasic: arte marțiale, comedie și un băiat care se transformă în fată la contactul cu apa rece. Haos pur, exact cum trebuie.</p>
+        <a class="external-link" href="https://www.viz.com/ranma-1-2" target="_blank" rel="noopener noreferrer">Pagina oficială Ranma ½ la VIZ <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
-
   <section id="carti">
     <h2>Cărțile</h2>
     <p class="lead">Seria <em>The Folk of the Air</em> de Holly Black: lumea Zânelor, intrigi de curte și o fată muritoare care nu are de gând să piardă. Alege un volum.</p>
@@ -172,14 +197,31 @@ footer .btns{justify-content:center;margin-bottom:1.5rem}
       <button class="spine s4" type="button" aria-pressed="false" data-t="Povestea suplimentară din seria Folk of the Air, pentru când vrei să mai rămâi în lume.">How the King of Elfhame Learned to Hate Stories</button>
     </div>
     <p class="note" id="note" aria-live="polite">Apasă pe o carte de pe raft.</p>
+    <div class="book-actions">
+      <button type="button" id="read-book" disabled>Alege o carte ca să citești PDF-ul</button>
+      <input id="pdf-file" type="file" accept="application/pdf,.pdf" hidden>
+    </div>
+    <p class="privacy-note">Alege PDF-ul tău de pe dispozitiv. Fișierul se deschide aici și nu este încărcat pe site.</p>
   </section>
 </main>
-
+<dialog class="reader" id="reader" aria-labelledby="reader-title">
+  <div class="reader-shell">
+    <header class="reader-head">
+      <h3 id="reader-title">Lectură</h3>
+      <div class="btns">
+        <a class="btn" id="reader-new-tab" href="#" target="_blank" rel="noopener noreferrer">Deschide separat</a>
+        <button type="button" id="close-reader" aria-label="Închide cititorul">Închide</button>
+      </div>
+    </header>
+    <div class="reader-frame">
+      <iframe id="pdf-viewer" title="Cititor PDF"></iframe>
+    </div>
+  </div>
+</dialog>
 <footer>
   <div class="btns"><button type="button" onclick="window.print()">Salvează ca PDF</button></div>
   <p>Făcut cu drag pentru Ema 🩵</p>
 </footer>
-
 <script>
 (function(){
   var $=function(i){return document.getElementById(i)};
@@ -205,14 +247,45 @@ footer .btns{justify-content:center;margin-bottom:1.5rem}
     $('water').textContent=girl?'Toarnă apă caldă':'Toarnă apă';
   });
   var spines=document.querySelectorAll('.spine');
+  var selectedBook=null,readerUrl=null;
+  var readBook=$('read-book'),pdfInput=$('pdf-file'),reader=$('reader'),viewer=$('pdf-viewer');
   spines.forEach(function(b){
     b.addEventListener('click',function(){
       spines.forEach(function(x){x.setAttribute('aria-pressed','false')});
       b.setAttribute('aria-pressed','true');
+      selectedBook=b.textContent.trim();
       $('note').textContent=b.getAttribute('data-t');
+      readBook.disabled=false;
+      readBook.textContent='Citește PDF-ul: '+selectedBook;
     });
+  });
+  readBook.addEventListener('click',function(){if(selectedBook)pdfInput.click()});
+  pdfInput.addEventListener('change',function(){
+    var file=pdfInput.files&&pdfInput.files[0];
+    if(!file)return;
+    if(file.type!=='application/pdf'&&!/\.pdf$/i.test(file.name)){
+      alert('Alege un fișier PDF pentru această carte.');
+      pdfInput.value='';
+      return;
+    }
+    if(readerUrl)URL.revokeObjectURL(readerUrl);
+    readerUrl=URL.createObjectURL(file);
+    viewer.src=readerUrl;
+    $('reader-title').textContent=selectedBook+' — cititor PDF';
+    $('reader-new-tab').href=readerUrl;
+    reader.showModal();
+    pdfInput.value='';
+  });
+  function closeReader(){if(reader.open)reader.close()}
+  $('close-reader').addEventListener('click',closeReader);
+  reader.addEventListener('click',function(e){if(e.target===reader)closeReader()});
+  reader.addEventListener('close',function(){
+    viewer.src='about:blank';
+    $('reader-new-tab').removeAttribute('href');
+    if(readerUrl){URL.revokeObjectURL(readerUrl);readerUrl=null}
   });
 })();
 </script>
 </body>
 </html>
+
